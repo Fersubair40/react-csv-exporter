@@ -1,6 +1,6 @@
 {
 	"name": "@temilayodev/react-csv-exporter",
-	"version": "0.0.0-semantic-release",
+	"version": "1.0.0",
 	"main": "dist/umd/index.js",
 	"module": "dist/esm/index.js",
 	"types": "dist/esm/index.d.ts",
