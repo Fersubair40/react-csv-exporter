@@ -15,17 +15,21 @@ A lightweight, TypeScript-first React library for exporting data to CSV files wi
 ## Installation
 
 ```bash
-npm install react-csv-exporter
-# or
-yarn add react-csv-exporter
+npm install @temilayodev/react-csv-exporter
 ```
+
+# or
+
+yarn add @temilayodev/react-csv-exporter
+
+`` ` bash
 
 ## Quick Start
 
 ### Basic Usage
 
 ```typescript
-import {exportToCSV} from 'react-csv-exporter';
+import {exportToCSV} from '@temilayodev/react-csv-exporter';
 
 const data = [
 	{name: 'John Doe', age: 30, email: 'john@example.com'},
@@ -39,7 +43,7 @@ exportToCSV({data});
 ### Using the React Hook
 
 ```typescript
-import {useCSVExporter} from 'react-csv-exporter';
+import {useCSVExporter} from '@temilayodev/react-csv-exporter';
 
 function MyComponent() {
 	const exportCSV = useCSVExporter();
