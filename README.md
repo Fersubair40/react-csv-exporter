@@ -20,9 +20,9 @@ npm install @temilayodev/react-csv-exporter
 
 # or
 
+```bash
 yarn add @temilayodev/react-csv-exporter
-
-`` ` bash
+```
 
 ## Quick Start
 
