@@ -1,4 +1,4 @@
-# React CSV Exporter Lite
+# React CSV Exporter
 
 A lightweight, TypeScript-first React library for exporting data to CSV files with extensive customization options.
 
@@ -15,9 +15,9 @@ A lightweight, TypeScript-first React library for exporting data to CSV files wi
 ## Installation
 
 ```bash
-npm install react-csv-exporter-lite
+npm install react-csv-exporter
 # or
-yarn add react-csv-exporter-lite
+yarn add react-csv-exporter
 ```
 
 ## Quick Start
@@ -25,35 +25,35 @@ yarn add react-csv-exporter-lite
 ### Basic Usage
 
 ```typescript
-import { exportToCSV } from 'react-csv-exporter-lite';
+import {exportToCSV} from 'react-csv-exporter';
 
 const data = [
-  { name: 'John Doe', age: 30, email: 'john@example.com' },
-  { name: 'Jane Smith', age: 25, email: 'jane@example.com' }
+	{name: 'John Doe', age: 30, email: 'john@example.com'},
+	{name: 'Jane Smith', age: 25, email: 'jane@example.com'},
 ];
 
 // Simple export
-exportToCSV({ data });
+exportToCSV({data});
 ```
 
 ### Using the React Hook
 
 ```typescript
-import { useCSVExporter } from 'react-csv-exporter-lite';
+import {useCSVExporter} from 'react-csv-exporter';
 
 function MyComponent() {
-  const exportCSV = useCSVExporter();
+	const exportCSV = useCSVExporter();
 
-  const handleExport = () => {
-    exportCSV({
-      data: myData,
-      filename: 'users.csv',
-      headers: ['name', 'age', 'email'],
-      labels: ['Full Name', 'Age', 'Email Address']
-    });
-  };
+	const handleExport = () => {
+		exportCSV({
+			data: myData,
+			filename: 'users.csv',
+			headers: ['name', 'age', 'email'],
+			labels: ['Full Name', 'Age', 'Email Address'],
+		});
+	};
 
-  return <button onClick={handleExport}>Export CSV</button>;
+	return <button onClick={handleExport}>Export CSV</button>;
 }
 ```
 
@@ -66,7 +66,7 @@ Main export function that generates and downloads a CSV file.
 ### `CSVExportOptions<T>`
 
 | Property | Type | Default | Description |
-|----------|------|---------|-------------|
+| --- | --- | --- | --- |
 | `data` | `T[]` | **required** | Array of objects to export |
 | `filename` | `string` | `'export.csv'` | Name of the downloaded file |
 | `headers` | `(keyof T \| string)[]` | `Object.keys(data[0])` | Column headers to include |
@@ -95,15 +95,15 @@ React hook that returns the export function.
 
 ```typescript
 const userData = [
-  { firstName: 'John', lastName: 'Doe', birthYear: 1993 },
-  { firstName: 'Jane', lastName: 'Smith', birthYear: 1998 }
+	{firstName: 'John', lastName: 'Doe', birthYear: 1993},
+	{firstName: 'Jane', lastName: 'Smith', birthYear: 1998},
 ];
 
 exportToCSV({
-  data: userData,
-  headers: ['firstName', 'lastName', 'birthYear'],
-  labels: ['First Name', 'Last Name', 'Birth Year'],
-  filename: 'users.csv'
+	data: userData,
+	headers: ['firstName', 'lastName', 'birthYear'],
+	labels: ['First Name', 'Last Name', 'Birth Year'],
+	filename: 'users.csv',
 });
 ```
 
@@ -111,16 +111,16 @@ exportToCSV({
 
 ```typescript
 const products = [
-  { name: 'Widget', price: 19.99, inStock: true },
-  { name: 'Gadget', price: 29.99, inStock: false }
+	{name: 'Widget', price: 19.99, inStock: true},
+	{name: 'Gadget', price: 29.99, inStock: false},
 ];
 
 exportToCSV({
-  data: products,
-  formatters: {
-    price: (value) => `$${value.toFixed(2)}`,
-    inStock: (value) => value ? 'Yes' : 'No'
-  }
+	data: products,
+	formatters: {
+		price: (value) => `$${value.toFixed(2)}`,
+		inStock: (value) => (value ? 'Yes' : 'No'),
+	},
 });
 ```
 
@@ -128,9 +128,9 @@ exportToCSV({
 
 ```typescript
 exportToCSV({
-  data: myData,
-  useKeysAsHeader: false, // No header row
-  filename: 'data-only.csv'
+	data: myData,
+	useKeysAsHeader: false, // No header row
+	filename: 'data-only.csv',
 });
 ```
 
@@ -138,16 +138,13 @@ exportToCSV({
 
 ```typescript
 exportToCSV({
-  data: salesData,
-  prependRows: [
-    ['Sales Report'],
-    ['Generated on:', new Date().toLocaleDateString()],
-    [] // Empty row
-  ],
-  appendRows: [
-    [],
-    ['Total Records:', salesData.length.toString()]
-  ]
+	data: salesData,
+	prependRows: [
+		['Sales Report'],
+		['Generated on:', new Date().toLocaleDateString()],
+		[], // Empty row
+	],
+	appendRows: [[], ['Total Records:', salesData.length.toString()]],
 });
 ```
 
@@ -155,10 +152,10 @@ exportToCSV({
 
 ```typescript
 exportToCSV({
-  data: largeDataset,
-  onExportStart: () => console.log('Export started...'),
-  onExportComplete: () => console.log('Export completed!'),
-  addTimestamp: true
+	data: largeDataset,
+	onExportStart: () => console.log('Export started...'),
+	onExportComplete: () => console.log('Export completed!'),
+	addTimestamp: true,
 });
 ```
 
@@ -168,24 +165,22 @@ The library is built with TypeScript and provides full type safety:
 
 ```typescript
 interface User {
-  id: number;
-  name: string;
-  email: string;
+	id: number;
+	name: string;
+	email: string;
 }
 
-const users: User[] = [
-  { id: 1, name: 'John', email: 'john@example.com' }
-];
+const users: User[] = [{id: 1, name: 'John', email: 'john@example.com'}];
 
 // TypeScript will enforce correct property names
 exportToCSV<User>({
-  data: users,
-  headers: ['id', 'name'], // ✅ Valid
-  // headers: ['invalid'], // ❌ TypeScript error
-  formatters: {
-    id: (value) => `#${value}`, // ✅ Correct type
-    // name: (value) => value.toUpperCase() // ✅ String methods available
-  }
+	data: users,
+	headers: ['id', 'name'], // ✅ Valid
+	// headers: ['invalid'], // ❌ TypeScript error
+	formatters: {
+		id: (value) => `#${value}`, // ✅ Correct type
+		// name: (value) => value.toUpperCase() // ✅ String methods available
+	},
 });
 ```
 
