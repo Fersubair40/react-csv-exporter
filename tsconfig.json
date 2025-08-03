@@ -1,0 +1,18 @@
+{
+	"compilerOptions": {
+		"target": "ES2018",
+		"moduleResolution": "Node",
+		"lib": ["dom", "es2018"],
+		"jsx": "react-jsx",
+		"declaration": true,
+		"strict": true,
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true,
+		"resolveJsonModule": true,
+		"isolatedModules": true
+	},
+	"include": ["src/**/*"],
+	"exclude": ["node_modules", "dist", "src/tests", "**/*.test.ts", "**/*.spec.ts"]
+}

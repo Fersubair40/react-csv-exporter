@@ -1,0 +1,13 @@
+{
+  "branches": ["main", "master"],
+  "repositoryUrl": "https://github.com/Fersubair40/react-csv-exporter.git",
+  "debug": "true",
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    "@semantic-release/changelog",
+    "@semantic-release/npm",
+    "@semantic-release/git",
+    "@semantic-release/github"
+  ]
+}
